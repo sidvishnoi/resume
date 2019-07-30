@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "deploy": "node to-gh-pages.js"
+    "build": "node build.js"
   },
   "author": "Sid Vishnoi <sidvishnoi8@gmail.com>",
   "license": "ISC",

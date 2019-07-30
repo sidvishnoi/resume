@@ -1,17 +1,14 @@
 const path = require("path");
 const fs = require("fs").promises;
-const os = require("os");
 const puppeteer = require("puppeteer");
 const exec = require("util").promisify(require("child_process").exec);
 
 async function main() {
   console.group(arguments.callee.name);
 
-  const { hash, message } = await getLatestCommit();
-  const buildDir = await fs.mkdir(path.join(__dirname, "buikd"));
-
-  await printPDF(buildDir);
-  await updateServiceWorkerVersion(hash, buildDir);
+  const { hash } = await getLatestCommit();
+  const buildDir = path.join(__dirname, "build");
+  await fs.mkdir(buildDir);
 
   const files = [
     "resume.css",
@@ -24,16 +21,8 @@ async function main() {
   ];
   await copyFiles(files, __dirname, buildDir);
 
-  await runCommand("git checkout gh-pages");
-  await copyFiles(
-    files.concat("sw.js", "sudhanshu-vishnoi-resume.pdf"),
-    buildDir,
-    __dirname,
-  );
-  await runCommand("git add . --verbose");
-
-  await runCommand(`git commit -m "deploy: ${message} (${hash.slice(0, 8)})"`);
-  await runCommand("git push origin gh-pages --dry-run");
+  await printPDF(buildDir);
+  await updateServiceWorkerVersion(hash, buildDir);
 
   console.groupEnd();
 }
@@ -44,13 +33,6 @@ main()
     console.error(err);
     process.exit(1);
   });
-
-async function runCommand(cmd) {
-  console.group(arguments.callee.name + " << " + cmd + " >>");
-  const { stderr, stdout } = await exec(cmd);
-  console.log(stdout || stderr);
-  console.groupEnd();
-}
 
 async function printPDF(destDir) {
   console.group(arguments.callee.name);
