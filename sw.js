@@ -1,5 +1,5 @@
 // @ts-check
-const __version = "42849ae";
+const __version = "c7392ac0"
 const CACHE = "resume#" + __version;
 
 const sw = /** @type {ServiceWorkerGlobalScope} */ (self);

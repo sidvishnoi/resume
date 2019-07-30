@@ -1,0 +1,13 @@
+{
+  "name": "sidvishnoi.github.io-resume",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "node to-gh-pages.js"
+  },
+  "author": "Sid Vishnoi <sidvishnoi8@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "puppeteer": "^1.19.0"
+  }
+}
