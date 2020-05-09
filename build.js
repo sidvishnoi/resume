@@ -8,7 +8,9 @@ async function main() {
 
   const { hash } = await getLatestCommit();
   const buildDir = path.join(__dirname, "build");
-  await fs.mkdir(buildDir);
+  try {
+    await fs.mkdir(buildDir);
+  } catch {}
 
   const files = [
     "resume.css",
