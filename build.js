@@ -1,12 +1,10 @@
 const path = require("path");
 const fs = require("fs").promises;
 const puppeteer = require("puppeteer");
-const exec = require("util").promisify(require("child_process").exec);
 
 async function main() {
   console.group(arguments.callee.name);
 
-  const { hash } = await getLatestCommit();
   const buildDir = path.join(__dirname, "build");
   try {
     await fs.mkdir(buildDir);
@@ -24,7 +22,6 @@ async function main() {
   await copyFiles(files, __dirname, buildDir);
 
   await printPDF(buildDir);
-  await updateServiceWorkerVersion(hash, buildDir);
 
   console.groupEnd();
 }
@@ -59,26 +56,6 @@ async function printPDF(destDir) {
   });
   await browser.close();
   console.log(`Saved PDF at ${pdfFile}`);
-  console.groupEnd();
-}
-
-async function getLatestCommit() {
-  const result = await exec(`git log -1 --pretty="%H;%s"`);
-  const stdout = result.stdout.trim();
-  const [hash, message] = stdout.split(";", 2);
-  return { hash, message };
-}
-
-async function updateServiceWorkerVersion(version, destDir) {
-  console.group(arguments.callee.name);
-  const src = path.join(__dirname, "sw.js");
-  console.log(`Updating service worker version at: ${src}`);
-  const dest = path.join(destDir, "sw.js");
-  const input = await fs.readFile(src, "utf-8");
-  const output = input.replace(/(const __version = ).*/, `$1"${version}"`);
-  console.log(`Updated service worker version to ${version}`);
-  await fs.writeFile(dest, output);
-  console.log(`Saved updated service worker at ${dest}`);
   console.groupEnd();
 }
 
