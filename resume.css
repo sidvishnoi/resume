@@ -57,11 +57,7 @@ hr {
   height: 2px;
 }
 
-img {
-  max-width: 100%;
-}
-
-img.icon {
+.icon {
   max-width: 16px;
   margin-right: 0.5em;
 }

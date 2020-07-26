@@ -16,11 +16,7 @@ async function main() {
     "analytics.js",
     "fonts/source-sans-pro-bold-700.woff2",
     "fonts/source-sans-pro-regular-400.woff2",
-    "icons/pdf.svg",
-    "icons/twitter.svg",
-    "icons/github.svg",
-    "icons/linkedin.svg",
-    "icons/stackoverflow.svg",
+    "icons.svg",
   ];
   await copyFiles(files, __dirname, buildDir);
 
