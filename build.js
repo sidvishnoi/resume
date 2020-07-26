@@ -13,6 +13,7 @@ async function main() {
   const files = [
     "resume.css",
     "index.html",
+    "analytics.js",
     "icons/pdf.svg",
     "icons/twitter.svg",
     "icons/github.svg",
