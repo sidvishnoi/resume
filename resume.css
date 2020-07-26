@@ -1,34 +1,40 @@
 :root {
-  --font-family: 'Source Sans Pro', 'Lato', 'Helvetica', 'Open Sans', 'Arial', sans-serif;
-  --font-monospace: 'DejaVu Sans Mono', 'Fira Code', 'Courier New', monospace;
+  --font-family: "Source Sans Pro", "Lato", "Helvetica", "Open Sans", "Arial",
+    sans-serif;
+  --font-monospace: "DejaVu Sans Mono", "Fira Code", "Courier New", monospace;
   --border-main: 2px solid #ccc;
   --left-width: 63%;
   --right-width: 37%;
 }
 
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(fonts/source-sans-pro-regular-400.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url(fonts/source-sans-pro-regular-400.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-style: normal;
   font-display: swap;
   font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(fonts/source-sans-pro-bold-700.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"),
+    url(fonts/source-sans-pro-bold-700.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: none;
 }
 
 html {
@@ -60,10 +66,19 @@ hr {
 .icon {
   max-width: 16px;
   margin-right: 0.5em;
+  user-select: none;
+  display: inline-block;
 }
 
 a {
   color: #0d4ac5;
+}
+
+a:hover,
+a:focus {
+  outline: none;
+  background: hsl(116deg 100% 50% / 30%);
+  box-shadow: 0px 0 0 0.1em hsl(176deg 100% 50% / 30%);
 }
 
 .monospace {
@@ -76,41 +91,55 @@ strong {
   font-weight: 700;
 }
 
-header {
+.with-icon {
+  display: flex;
+  align-items: center;
+}
+
+address {
+  font-style: normal;
+}
+
+li {
+  margin-left: 1em;
+}
+
+.empty-line {
+  display: block;
+  height: 1em;
+}
+
+.header {
   position: relative;
 }
 
-header h1, header h2 {
+.header h1,
+.header p {
   line-height: 1.2;
   padding: 0.5rem 1rem 0.2rem;
   text-transform: uppercase;
 }
 
-header h1 {
+.header h1 {
   font-size: 2.6em;
 }
 
-header h1 span:nth-child(2) {
+.header h1 span:nth-child(2) {
   font-weight: 400;
 }
 
-header h2 {
+.header p {
   padding-top: 0;
   margin: 0 0 0.6em;
   font-weight: 400;
   font-size: 1.2em;
 }
 
-header a {
-  display: inline-block;
+.header a {
   position: absolute;
   top: 1em;
-  right: 0;
+  right: 1em;
   font-size: 14px;
-}
-
-header a img {
-  max-width: 14px;
 }
 
 main {
@@ -134,15 +163,15 @@ main .right {
   width: var(--right-width);
 }
 
-main h2 {
+h2 {
   margin: 0.5em 0;
-  font-size: 1.3em;
+  font-size: 1.3rem;
   line-height: 1.4;
   text-transform: uppercase;
   position: relative;
 }
 
-main h2:after {
+h2:after {
   position: absolute;
   display: block;
   content: "";
@@ -151,20 +180,41 @@ main h2:after {
   border-bottom: var(--border-main);
 }
 
-.education>div:nth-child(2) {
-  padding-top: 0.5em;
+h3 {
+  font-size: 1rem;
 }
 
-div>ul>li {
-  margin-left: 1em;
+div section + section {
+  margin: 1em 0;
 }
 
-.projects>ul>li {
-  margin-bottom: 0.6em;
+div section + section::before {
+  content: "";
+  display: block;
+  border-top: var(--border-main);
+  height: 2px;
 }
 
-div>ul>li li {
-  margin-left: 1em;
+article + article {
+  margin-top: 1em;
+}
+
+.projects article header {
+  display: flex;
+}
+
+.projects article header a {
+  margin-left: 0.5ch;
+  position: relative;
+}
+
+.projects article header a::before {
+  color: initial;
+  content: "(";
+}
+.projects article header a::after {
+  color: initial;
+  content: ")";
 }
 
 .contact {
@@ -213,7 +263,7 @@ div>ul>li li {
   .education {
     flex-direction: column;
   }
-  .education>div:nth-child(n+1) {
+  .education > div:nth-child(n + 1) {
     padding: 0.4em 0;
   }
   header a {
