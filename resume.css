@@ -199,13 +199,8 @@ article + article {
   margin-top: 1em;
 }
 
-.projects article header {
-  display: flex;
-}
-
-.projects article header a {
-  margin-left: 0.5ch;
-  position: relative;
+.projects article header > * {
+  display: inline-block;
 }
 
 .projects article header a::before {
