@@ -23,7 +23,8 @@
     }
     return str.join("&");
   };
-  win.addEventListener("unload", () => {
+  win.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") return;
     const url = "https://www.google-analytics.com/collect";
     const data = serialize({
       v: "1",
