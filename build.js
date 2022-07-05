@@ -11,7 +11,6 @@ async function main() {
   } catch {}
 
   const files = [
-    "resume.css",
     "index.html",
     "analytics.js",
     "fonts/source-sans-pro-bold-700.woff2",
