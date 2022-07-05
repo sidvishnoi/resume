@@ -238,6 +238,7 @@ article + article {
   display: grid;
   grid-template-columns: max-content auto;
   column-gap: 0.5em;
+  row-gap: 0.1em;
 }
 .contact dl dt {
   grid-column-start: 1;
