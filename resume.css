@@ -188,7 +188,7 @@ div section + section {
   margin: 1em 0;
 }
 
-div section + section:not(.no-border)::before {
+div section + section::before {
   content: "";
   display: block;
   border-top: var(--border-main);
@@ -233,6 +233,14 @@ article + article {
 
   abbr {
     text-decoration: none;
+  }
+
+  section.no-border::before {
+    border-top: 0;
+  }
+
+  section {
+    page-break-inside: avoid;
   }
 
   body {
