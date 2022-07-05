@@ -85,6 +85,24 @@ a:focus {
   font-family: var(--font-monospace);
 }
 
+.no-select {
+  user-select: none;
+}
+
+.visually-hidden {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 h1,
 h2,
 strong {
@@ -216,14 +234,19 @@ article + article {
   font-size: 0.9em;
 }
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+.contact dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+  column-gap: 0.5em;
+}
+.contact dl dt {
+  grid-column-start: 1;
+  font-family: var(--font-monospace);
+  display: inline-flex;
+  align-items: center;
+}
+.contact dl dd {
+  grid-column-start: 2;
 }
 
 @media only print {
