@@ -40,7 +40,7 @@ async function printPDF(destDir) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto(htmlFile, { waitUntil: "networkidle0" });
-  page.emulateMedia("print");
+  page.emulateMediaType("print");
   await page.pdf({
     format: "A4",
     printBackground: true,

@@ -9,7 +9,7 @@
   "author": "Sid Vishnoi <sidvishnoi8@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "puppeteer": "^1.19.0"
+    "puppeteer": "^15.3.0"
   },
   "prettier": {
     "singleQuote": false,
