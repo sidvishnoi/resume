@@ -188,7 +188,7 @@ div section + section {
   margin: 1em 0;
 }
 
-div section + section::before {
+div section + section:not(.no-border)::before {
   content: "";
   display: block;
   border-top: var(--border-main);
@@ -216,16 +216,30 @@ article + article {
   font-size: 0.9em;
 }
 
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 @media only print {
   .noprint {
     display: none;
   }
 
+  abbr {
+    text-decoration: none;
+  }
+
   body {
     /* A4 sheet */
     width: 21cm;
-    height: 29.7cm;
-    max-height: 29.7cm;
+    /* height: 29.7cm;
+    max-height: 29.7cm; */
   }
 }
 
