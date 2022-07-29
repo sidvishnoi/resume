@@ -12,7 +12,6 @@ async function main() {
 
   const files = [
     "index.html",
-    "analytics.js",
     "fonts/source-sans-pro-bold-700.woff2",
     "fonts/source-sans-pro-regular-400.woff2",
   ];
