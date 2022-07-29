@@ -15,7 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - run: yarn install
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          run_install: false
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v3
         with:

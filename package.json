@@ -11,6 +11,10 @@
   "devDependencies": {
     "puppeteer": "^15.3.0"
   },
+  "engines": {
+    "node": "16",
+    "pnpm": "^7.5"
+  },
   "prettier": {
     "singleQuote": false,
     "trailingComma": "all",
