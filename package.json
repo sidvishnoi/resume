@@ -9,12 +9,9 @@
   "author": "Sid Vishnoi <sidvishnoi8@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "puppeteer": "^15.3.0"
+    "puppeteer": "^22.4.1"
   },
-  "engines": {
-    "node": "16",
-    "pnpm": "^7.5"
-  },
+  "packageManager": "pnpm@8.15.4",
   "prettier": {
     "singleQuote": false,
     "trailingComma": "all",
